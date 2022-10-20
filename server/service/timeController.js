@@ -1,4 +1,3 @@
-
 const getTime = () => {
     return { epoch: Date.now() };   
 }

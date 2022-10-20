@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "concurrently \"cd server && node .\" \" cd client && npm start\"",
+    "dev": "concurrently \"cd server && nodemon .\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^7.4.0",
     "express": "^4.18.2",
     "express-prometheus-middleware": "^1.2.0",
-    "jsonschema": "^1.4.1"
+    "jsonschema": "^1.4.1",
+    "nodemon": "^2.0.20"
   }
 }
