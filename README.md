@@ -25,11 +25,11 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Starts the server and runs the client in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### `npm dev`
+### `npm run dev`
 
-Launches the client and server using nodemon. Any changes made will update as you work on the code.
+Launches the client and server in development mode, using nodemon. Any changes made will update as you work on the code.
 
 

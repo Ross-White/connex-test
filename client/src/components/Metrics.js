@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { getMetrics } from "../api";
+import React from "react";
 
-const Metrics = () => {
-  const [metrics, setMetrics] = useState(null);
-
-
-  useEffect(() => {
-    const fetchMetrics = async () => {    
-      const metrics = await getMetrics();
-      setMetrics(metrics);
-    }
-    fetchMetrics();
-  }, []);
+const Metrics = (props) => {
   
-  return !metrics ? <div>Loading...</div> : <div>{metrics}</div>;
+  return <div>{props.metrics}</div>;
 };
 
 export default Metrics;

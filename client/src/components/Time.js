@@ -31,12 +31,10 @@ const Time = (props) => {
     return () => clearInterval(epochInterval);
   }, [getTimeDifference]);
 
-  return !props.epochTime ? (
-    <div>Loading...</div>
-  ) : (
+  return (
     <div>
       <div>
-        <p>Server Time </p>
+        <p>Server Time in Epoch Seconds</p>
         <p>{Math.round(props.epochTime / 1000)}</p>
       </div>
       <div>
