@@ -1,18 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import dayjs from "dayjs";
-import { getTime } from "../api";
 
-const Time = () => {
-  const [epochTime, setEpochTime] = useState(null);
+const Time = (props) => {
   const [timeDifference, setTimeDifference] = useState(null);
 
-  const getEpochTime = useCallback(async () => {
-    const time = await getTime();
-    setEpochTime(time.epoch);
-  }, []);
-
   const getTimeDifference = useCallback(async () => {
-    const timeDifference = dayjs().diff(epochTime);
+    const timeDifference = dayjs().diff(props.epochTime);
 
     const diffInHrs = timeDifference / 3600000;
     const hh = Math.floor(diffInHrs);
@@ -30,13 +23,7 @@ const Time = () => {
     const differenceString = `${formattedHH}:${formattedMM}:${formattedSS}`;
 
     setTimeDifference(differenceString);
-  }, [epochTime]);
-
-  useEffect(() => {
-    getEpochTime();
-    const epochInterval = setInterval(() => getEpochTime(), 30000);
-    return () => clearInterval(epochInterval);
-  }, [getEpochTime]);
+  }, [props.epochTime]);
 
   useEffect(() => {
     getTimeDifference();
@@ -44,15 +31,17 @@ const Time = () => {
     return () => clearInterval(epochInterval);
   }, [getTimeDifference]);
 
-  return (
+  return !props.epochTime ? (
+    <div>Loading...</div>
+  ) : (
     <div>
       <div>
         <p>Server Time </p>
-        <p>{epochTime ?? "Loading..."}</p>
+        <p>{Math.round(props.epochTime / 1000)}</p>
       </div>
       <div>
         <p>Time Difference</p>
-        <p>{timeDifference ?? "Loading..."}</p>
+        <p>{timeDifference}</p>
       </div>
     </div>
   );
