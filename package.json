@@ -17,6 +17,10 @@
     "express": "^4.18.2",
     "express-prometheus-middleware": "^1.2.0",
     "jsonschema": "^1.4.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^3.0.4"
   }
 }
